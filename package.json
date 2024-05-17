@@ -1,0 +1,28 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "@inertiajs/vue3": "^1.0.0",
+        "@tailwindcss/forms": "^0.5.3",
+        "@vitejs/plugin-vue": "^5.0.0",
+        "autoprefixer": "^10.4.12",
+        "axios": "^1.6.4",
+        "laravel-vite-plugin": "^1.0",
+        "postcss": "^8.4.31",
+        "tailwindcss": "^3.2.1",
+        "vite": "^5.0",
+        "vue": "^3.4.0"
+    },
+    "dependencies": {
+        "grapesjs": "^0.21.10",
+        "grapesjs-blocks-basic": "^1.0.2",
+        "grapesjs-plugin-forms": "^2.0.6",
+        "grapesjs-preset-webpage": "^1.0.3",
+        "grapesjs-tooltip": "^0.1.8",
+        "litepie-datepicker-tw3": "^0.0.5"
+    }
+}
