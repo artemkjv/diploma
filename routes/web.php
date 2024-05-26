@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/projects/{id}', [ProjectController::class, 'update'])->name('projects.update');
 
     Route::resource('events', EventController::class)->except(['update']);
-    Route::post('/projects/{id}', [EventController::class, 'update'])->name('events.update');
+    Route::post('/events/{id}', [EventController::class, 'update'])->name('events.update');
 
 });
 
