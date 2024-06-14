@@ -21,11 +21,11 @@ class Event extends Model
         'page_id',
     ];
 
-    public static function getByUserAndId(User $user, $id)
+    public static function getByUserAndId(User $user, int|string $id)
     {
         return $user->events()
             ->with('page')
-            ->find($id);
+            ->findOrFail($id);
     }
 
     public function user() {

@@ -50,7 +50,7 @@ const addFile = (file) => {
 </script>
 
 <template>
-    <Head title="Projects"/>
+    <Head title="Create Project"/>
 
     <AuthenticatedLayout>
         <template #header>

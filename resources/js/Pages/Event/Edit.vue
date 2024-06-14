@@ -36,7 +36,7 @@
                                     id="description"
                                     class="mt-1 block w-full"
                                     v-model="form.description"
-                                    placeholder="Description for project"
+                                    placeholder="Description for event"
                                 />
 
                                 <InputError class="mt-2" :message="form.errors.description" />
@@ -53,6 +53,11 @@
                                 />
 
                                 <InputError class="mt-2" :message="form.errors.image" />
+
+                                <figure class="max-w-lg mt-2">
+                                    <img class="h-auto rounded-lg max-w-[100px]" :src="`/storage/${event.image}`" alt="image description">
+                                </figure>
+
                             </div>
 
                             <div class="mt-4">

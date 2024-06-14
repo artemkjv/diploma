@@ -27,7 +27,6 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         $project = Project::getByUserAndId(\request()->user(), $id);
-        if (!$project) abort(403, 'Unauthorized');
         $project->delete();
         return back();
     }
@@ -64,7 +63,6 @@ class ProjectController extends Controller
     public function edit()
     {
         $project = Project::getByUserAndId(\request()->user(), \request()->route('project'));
-        if (!$project) abort(403, 'Unauthorized');
         $project = (new ViewResource($project))->resolve();
         $statuses = ProjectStatus::all();
         return inertia('Project/Edit', compact('project', 'statuses'));
@@ -73,7 +71,6 @@ class ProjectController extends Controller
     public function update(StoreRequest $request, $id)
     {
         $project = Project::getByUserAndId(\request()->user(), $id);
-        if (!$project) abort(403, 'Unauthorized');
         $payload = $request->validated();
         $payload['start_date'] = $payload['date'][0];
         $payload['end_date'] = $payload['date'][1];

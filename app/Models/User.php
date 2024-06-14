@@ -48,6 +48,8 @@ class User extends Authenticatable
         ];
     }
 
+    public const PAGINATE = 10;
+
     public function projects() {
         return match ($this->role) {
             Role::ADMIN->value => Project::query(),
@@ -64,6 +66,29 @@ class User extends Authenticatable
             default => self::query()
                 ->whereNull('id'),
         };
+    }
+
+    public function news() {
+        return match ($this->role) {
+            Role::ADMIN->value => News::query(),
+            Role::EDITOR->value => $this->hasMany(News::class),
+            default => self::query()
+                ->whereNull('id'),
+        };
+    }
+
+    public static function paginate() {
+        return User::query()
+            ->where('role', '!=', Role::ADMIN)
+            ->orderByDesc('id')
+            ->paginate(self::PAGINATE);
+    }
+
+    public static function getById(int|string $id) {
+        return User::query()
+            ->where('role', '!=', Role::ADMIN)
+            ->where('id', $id)
+            ->firstOrFail();
     }
 
 }

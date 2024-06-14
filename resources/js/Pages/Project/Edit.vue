@@ -24,7 +24,7 @@ const props = defineProps({
 
 const form = useForm({
     name: props.project.name,
-    project_status_id: props.project.project_status_id,
+    project_status_id: props.project.status.id,
     description: props.project.description,
     date: [props.project.start_date, props.project.end_date],
     files: props.project.files,
@@ -54,12 +54,12 @@ const addFile = (file) => {
 </script>
 
 <template>
-    <Head title="Projects"/>
+    <Head title="Edit Project"/>
 
     <AuthenticatedLayout>
         <template #header>
             <div class="flex justify-between">
-                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Create Project</h2>
+                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Edit Project</h2>
             </div>
         </template>
 
@@ -134,7 +134,7 @@ const addFile = (file) => {
 
                             <div class="mt-4">
                                 <PrimaryButton class="" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                                    Create
+                                    Submit
                                 </PrimaryButton>
                             </div>
                         </form>

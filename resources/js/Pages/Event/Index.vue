@@ -35,7 +35,7 @@ const props = defineProps({
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="relative overflow-x-auto">
-                        <table v-if="events.data.llength > 0" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <table v-if="events.data.length > 0" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <thead
                                 class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
@@ -64,7 +64,7 @@ const props = defineProps({
                                     {{ event.name }}
                                 </th>
                                 <td class="px-6 py-4" v-if="$page.props.auth.user.role === 'Admin'">
-                                    {{ event.user.name }}
+                                    {{ event.user?.name }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ event.description.substring(0, 25) }}...

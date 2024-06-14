@@ -61,7 +61,7 @@ const props = defineProps({
                                     {{ project.name }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ project.user.name }}
+                                    {{ project.user?.name }}
                                 </td>
                                 <td class="px-6 py-4">
                                     <span class="py-1 px-4 text-white rounded"

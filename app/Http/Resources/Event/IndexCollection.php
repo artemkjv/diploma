@@ -14,7 +14,6 @@ class IndexCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-//        dd($this->resource->)
         return [
             'data' => $this->collection->map(function ($event) {
                 return [

@@ -11,10 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
+
+        Schema::create('client_request_statuses', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('color');
+            $table->timestamps();
+        });
+
         Schema::create('client_requests', function (Blueprint $table) {
             $table->id();
+            $table->string('email');
             $table->string('theme');
             $table->text('content');
+            $table->foreignIdFor(\App\Models\ClientRequestStatus::class)
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
             $table->timestamps();
         });
     }
@@ -25,5 +38,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('client_requests');
+        Schema::dropIfExists('client_request_statuses');
     }
 };

@@ -37,11 +37,11 @@ class Project extends Model
             ->withQueryString();
     }
 
-    public static function getByUserAndId(User $user, int $id) {
+    public static function getByUserAndId(User $user, int|string $id) {
         return $user
             ->projects()
             ->with(['status', 'files'])
-            ->find($id);
+            ->findOrFail($id);
     }
 
     public function files() {

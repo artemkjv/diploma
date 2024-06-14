@@ -16,15 +16,21 @@ return new class extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('content');
+            $table->string('styles')
+                ->nullable();
             $table->foreignIdFor(\App\Models\NewsCategory::class)
                 ->nullable()
                 ->constrained()
                 ->nullOnDelete();
             $table->foreignIdFor(\App\Models\User::class)
+                ->constrained()
+                ->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\Page::class)
                 ->constrained()
                 ->cascadeOnDelete();
             $table->string('image')->nullable();
@@ -37,7 +43,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('news_categories');
         Schema::dropIfExists('news');
+        Schema::dropIfExists('news_categories');
     }
 };
